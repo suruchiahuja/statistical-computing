@@ -1,0 +1,152 @@
+\documentclass[letterpaper]{article}  
+
+\usepackage{graphicx}
+\begin{document}
+
+
+\title{STA511 Homework \#1}
+\date{}
+\author{Suruchi Jaikumar Ahuja}
+\maketitle
+
+\begin{enumerate}
+
+\item I have read the first five chapters of R Programming
+
+\item Here's my answer to problem two part a.
+\begin{verbatim} 
+X <- runif(1000, min =0, max =1)
+Y <- ((3.14*X)- (3.14/4))
+Y <- runif(1000, min =0, max =1)
+par(bg="grey")
+par(mfrow=c(1,2))
+hist(X)
+hist(Y)
+\end{verbatim}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=\linewidth]{fig1.jpeg}
+\caption{ Histograms of X and Y \label{overflow}}
+\label{Figure1:Histogram of X and Y}
+\end{figure}
+
+
+\item  Here's my answer to problem two part b
+\\Normal distribution
+
+\item  Here's my answer to problem two part c
+\begin{verbatim} 
+Z <- runif(1000, min =0, max =1)
+hist(X+Z)
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig2.jpeg}
+\caption{ Histograms of X + Z \label{overflow}}
+\label{Figure2:Histogram of X + Z}
+ \end{figure}
+
+\item  Here's my answer to problem two part d
+\begin{verbatim} 
+	library(MASS)
+truehist(X+Z)
+\end{verbatim}  
+
+\begin{figure}
+\includegraphics[width=\linewidth]{fig3.jpeg}
+\caption{ True Histograms of X and Z \label{overflow}}
+\label{Figure3: True Histogram of X and Z}
+\end{figure}
+In a hist it is plotted against frequency and in a truehist it is plotted against density
+
+\item  Here's my answer to problem two part e
+\\ Normal distribution
+
+
+\item My answer to \# 3, it has multiple parts.
+\begin{enumerate}
+\item Here how I answered part a.
+\begin{verbatim}
+class = read.table("classlist.txt",header = TRUE,  sep="\t")
+class$obs <- runif(35, min= 60, max =100)
+\end{verbatim}
+
+
+ 
+\item Here's my code for part b
+\begin{verbatim}
+
+grade <- cut(class$obs,
+           breaks=c(0,seq(75,100,by= 5)),
+        labels =c("C","B-","B","B+","A-","A"))
+class$grade <- grade
+xtable(class, caption ="List of students in class")
+\end{verbatim}
+\end{enumerate} 
+
+xtable(class, caption="List of students in class")
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Wed Sep 30 01:11:01 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllrl}
+  \hline
+ & Name & Program.and.Plan & Level & obs & grade \\ 
+  \hline
+1 & An,Bo & Pharmaceutcl Sci Doctoral -  & Doctoral 2 & 84.06 & B \\ 
+  2 & Bu,Yahao & Public Health Masters -  & Masters 2 & 84.59 & B \\ 
+  3 & Chang,Huiru & Public Health Masters -  & Masters 2 & 68.20 & C \\ 
+  4 & Chen,Jiangwang & Public Health Masters -  & Masters 2 & 67.98 & C \\ 
+  5 & Eum,Youngseob & Arts \& Sciences Doctoral -  & Doctoral 1 & 79.84 & B- \\ 
+  6 & Ganley,Kevin & Public Health Masters -  & Masters 1 & 78.21 & B- \\ 
+  7 & Hess,Katelyn & Arts \& Sciences Masters -  & Masters 1 & 90.12 & A- \\ 
+  8 & Hsu,En-Shuo & Public Health Masters -  & Masters 1 & 71.33 & C \\ 
+  9 & Jai Kumar Ahuja,Suruchi & Public Health Masters -  & Masters 1 & 92.27 & A- \\ 
+  10 & Jin,Yuxuan & Public Health Doctoral -  & Doctoral 1 & 60.91 & C \\ 
+  11 & Karaesmen,Ezgi & Roswell Park Doctoral -  & Doctoral 2 & 92.22 & A- \\ 
+  12 & Krishnan,Krithika & Public Health Masters -  & Masters 1 & 76.29 & B- \\ 
+  13 & Lin,Jieya & Public Health Masters -  & Masters 1 & 66.75 & C \\ 
+  14 & Mandava,Aishwarya & Public Health Masters -  & Masters 1 & 62.06 & C \\ 
+  15 & Marsales,Harry & Public Health Masters -  & Masters 2 & 96.86 & A \\ 
+  16 & Morrell,Kayla & Public Health Masters -  & Masters 1 & 80.10 & B \\ 
+  17 & Niu,Jin & Pharmaceutcl Sci Doctoral -  & Doctoral 2 & 64.41 & C \\ 
+  18 & Rizvi,Abbas & Roswell Park Doctoral -  & Doctoral 2 & 77.86 & B- \\ 
+  19 & Rosario,Spencer Rae & Roswell Park Doctoral -  & Doctoral 2 & 82.70 & B \\ 
+  20 & Schiller,Emily & Public Health Masters -  & Masters 1 & 95.43 & A \\ 
+  21 & Song,Jiaming & Public Health Masters -  & Masters 1 & 74.51 & C \\ 
+  22 & Spencer,Mary & Public Health Masters -  & Masters 1 & 70.86 & C \\ 
+  23 & Sun,Xiaoxi & Public Health Masters -  & Masters 1 & 71.35 & C \\ 
+  24 & Tanue,Terence Wankah & Public Health Masters -  & Masters 1 & 98.47 & A \\ 
+  25 & Tian,Mingmei & Public Health Masters -  & Masters 2 & 89.54 & B+ \\ 
+  26 & Vucic,Luther & Public Health Masters -  & Masters 1 & 65.85 & C \\ 
+  27 & Wackeroth,Wolf Michael & Public Health Masters -  & Masters 1 & 78.91 & B- \\ 
+  28 & Wang,Jiefei & Public Health Masters -  & Masters 1 & 71.54 & C \\ 
+  29 & Wang,Xue & Roswell Park Doctoral -  & Doctoral 2 & 86.20 & B+ \\ 
+  30 & Wu,Yin & Grad Sch of Ed Doctoral -  & Doctoral 2 & 78.87 & B- \\ 
+  31 & Yang,Yang & Grad Sch of Ed Doctoral -  & Doctoral 2 & 91.81 & A- \\ 
+  32 & Yang,Yujie & Pharmaceutcl Sci Doctoral -  & Doctoral 2 & 67.70 & C \\ 
+  33 & Yang,Zeyu & Public Health Masters -  & Masters 1 & 61.39 & C \\ 
+  34 & Yu,Xinyang & Biomedical Sci Doctoral -  & Doctoral 2 & 84.55 & B \\ 
+  35 & Zhao,Yichen & Grad Sch of Ed Doctoral -  & Doctoral 2 & 70.16 & C \\ 
+   \hline
+\end{tabular}
+\caption{List of students in class} 
+\end{table}
+\item This problem involves the table below
+\begin{center}
+\begin{tabular}{rl}
+  Range & Grade \\
+\hline
+$\geq 95$ & A\\
+$\geq 90$ and $<95$ & A-\\
+$\geq 85$ and $<90$ & B+\\
+$\geq 80$ and $<85$ & B\\
+$\geq 75$ and $<80$ & B-\\
+$<75$ & C\\
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+
+\end{document}
