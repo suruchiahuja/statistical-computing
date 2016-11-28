@@ -1,0 +1,156 @@
+\documentclass[letterpaper]{article} 
+
+\usepackage{amssymb,amsmath} 
+\usepackage{graphicx}
+\usepackage{perpage}
+\MakePerPage{footnote}
+
+
+\begin{document}
+\title{STA 511 Homework \#3}
+\date{October 22 2015}
+\author{Suruchi Jaikumar Ahuja}
+\maketitle
+
+\begin{enumerate}
+
+\item The density on [0,infty) is given by 
+\begin{equation*}
+          f(x)=\dfrac{2}{\pi(1+x) \sqrt{x^2+2x}}
+\end{equation*}
+
+\begin{enumerate}
+
+\item 	To prove $0 \leq x \leq \theta $
+\begin{equation*}
+\dfrac{f(x)}{c_{\theta}g_{\theta}} =\dfrac{\dfrac{2}{\pi(1+x) \sqrt{x^2+2x}}}{\dfrac{2}{\pi\sqrt{2x}}}
+\end{equation*}\\
+
+Since the numerators are same , they can be ignored and the remaining equation is now considered,which leaves us with;\\
+
+\begin{equation*}
+\dfrac{f(x)}{c_{\theta}g_{\theta}} =\dfrac{\sqrt{2x}} {(1+x)\sqrt{x^2+2x}}
+\end{equation*}\\
+
+ For every value of $x > 0$ in $ \dfrac{f(x)}{c_{\theta}g_{\theta}}$ ; the denominator is greater than the numerator,\\
+
+So $\dfrac{f(x)}{c_{\theta} g_{\theta}} \leq 1 $\\\\
+
+$\rightarrow f(x) \leq c_{\theta} g_{\theta}$\\
+
+Now to prove $ x > \theta $ \\
+\begin{equation*}
+\dfrac{f(x)}{c_{\theta}g_{\theta}} =\dfrac{\dfrac{2}{\pi(1+x) \sqrt{x^2+2x}}}{\dfrac{2}{\pi x^2}}
+\end{equation*}\\
+
+Since the numerators are same , they can be ignored and the remaining equation is now considered,which leaves us with;\\
+
+\begin{equation*}
+\dfrac{f(x)}{c_{\theta}g_{\theta}} = \dfrac {x}{(1+x)\sqrt{x^2+2x}}
+\end{equation*}
+
+ For every value of $x > 0$ in $ \dfrac{f(x)}{c_{\theta}g_{\theta}}$ ; the denominator is greater than the numerator,\\
+
+So $\dfrac{f(x)}{c_{\theta} g_{\theta}} \leq 1 $\\\\
+
+$\rightarrow f(x) \leq c_{\theta} g_{\theta}$\\
+
+Hence the $  f(x) \leq c_{\theta} g_{\theta} $ stands true for both conditions \\
+
+
+
+\item 
+
+
+
+
+\item
+
+
+
+
+\end{enumerate} 
+
+\item   The Laplace distribution has pdf f(x) given by\\
+
+\begin{equation*}
+f(x) =\dfrac{\theta}{2}e^{-\theta |x|}  for \theta >0  and for  -\infty <x <\infty
+\end{equation*}
+
+\begin{enumerate}
+\item Here we assume \\
+$\theta =1$\\
+$\mu =3 $\\
+\begin{equation*}
+g(x)=\dfrac{\mu}{\pi(\mu^2 + x^2)}
+\end {equation*}\\
+
+To find the optimal rejection constant c we use the formula
+\begin{equation*}
+c=sup\dfrac{f(x)}{g(x)}
+\end{equation*}\\
+
+\begin{equation*}
+c = \dfrac{\dfrac{\theta}{2}e^{-\theta |x|}}{\dfrac{\mu}{\pi(\mu^2 + x^2)}}
+\end{equation*}\\
+
+\begin{equation*}
+c= \dfrac{\dfrac{1}{2} e^-|x|}{\dfrac{3}{\pi}(9+x^2)}
+\end{equation*}\\
+
+\begin{equation*}
+c = \dfrac{\pi}{6}e^{-|x|}(9+x^2)
+\end{equation*}\\
+
+\item
+
+
+\item
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+\item The beta distribution wih parameters $ \alpha > 0 $ and $\beta >0 $ has a continuous density given by 
+\begin{equation*}
+f(x) = \dfrac{1}{B(\alpha , \beta)}x^{\alpha-1}(1-x)^{\beta -1} for 0<x<1
+\end{equation*}\\
+
+\begin{enumerate}
+
+\item
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

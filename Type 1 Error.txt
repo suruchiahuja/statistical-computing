@@ -1,0 +1,5 @@
+"Sample_size" & "Chi_squared_test" & "KS_test"
+10 & 16 & 27
+25 & 21 & 19
+50 & 17 & 31
+100 & 19 & 26
