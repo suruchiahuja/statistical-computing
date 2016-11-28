@@ -1,0 +1,149 @@
+\documentclass[11pt]{article} 
+
+\usepackage{amssymb,amsmath} 
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{perpage}
+\MakePerPage{footnote}
+
+
+\begin{document}
+\title{STA 511 Homework \#5}
+\date{November 22 2015}
+\author{Suruchi Jaikumar Ahuja}
+\maketitle
+
+\begin{enumerate}
+
+\item 
+\begin{enumerate}
+\item To Estimate Pr (Reject $H_{0}|X_{1},X_{2},...X_{20}~ N(0.5,1)$) where the rejection criteria for ${H_0}$ is $|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96 $\\
+Here $\bar{X} = \Sigma \dfrac{X_i}{n}$ and sample size n = 20\\
+
+So, first we generate a uniform distribution of $X_{1},X_{2},....X_{20} ~ N(0.5,1)$ and then check for the rejection criteria.\\
+The Probabality is then calculated by performing the iteration 1000 times and then the count that satisfies the rejection criteria is divided by 1000.\\
+
+R Code:\\
+\begin{verbatim}
+n=20
+count=0
+
+rejection = function(x){
+    abs(mean(x)/(1/sqrt(n)))
+}
+for(i in 1:1000){
+  xdist = rnorm(n,0.5,1)
+#checking for rejection criteria
+  if(rejection(xdist)>1.96){
+  count=count+1
+}
+  }
+prob=count/1000
+\end{verbatim}
+
+Hence, Pr (Reject $H_{0}|X_{1},X_{2},...X_{20}~ N(0.5,1)$) = $|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96 $ = 0.605\\
+
+\item
+Now to show how the part(a) can be seen as a Monte Carlo integration Problem\\
+
+Looking at the rejection criteria,
+
+If I$|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96 $ then $\rightarrow$ 1\\\\
+Or else if I$|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| < 1.96 $ then $\rightarrow$ 0\\\\
+
+
+$|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96  = E(I(|{\dfrac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96 $))\\\\
+
+$ = \dfrac{\Sigma{(|{\frac{\bar {X}}{\frac{1}{\sqrt{n}}}}| > 1.96})} {n}$\\
+
+This is derived from the Monte-Carlo Integration problem\\
+
+Hence, the estimation of Pr (Reject $H_{0}|X_{1},X_{2},...X_{20}~ N(0.5,1)$) is a Monte-Carlo integration problem.\\
+\end{enumerate}
+
+
+\item Let ${X_1}$,${X_2}$,....${X_n}$ $~$ Bin(10,$\theta$), that is the data follows a Binomial data of size 10 with the probability of success $\theta$ \\
+
+\begin{enumerate}
+
+\item Maximum Likelihood for $\theta$ \\
+
+First the joint p.m.f is taken \\
+
+f(${X_1}$,${X_2}$,.....${X_n}$) = $\Pi_{i=1}^{n} \dbinom{N}{X_i} \theta^{X_i} {(1-\theta)^{N-{X_i}}} $ \\
+
+then,\\
+
+$ln f ({X_1},...{X_N} ) ={\Sigma_{i=1}^{n}} \dbinom{N}{X_i} + {\Sigma_{i=1}^{n}} {X_i} ln \theta + {\Sigma_{i=1}^{n}} (N- {X_i})ln (1-\theta) $\\
+
+$\dfrac{d}{dx} ln f ({X_i},....{X_n}) = \dfrac{{\Sigma_{i=1}^{n}}{X_i}}{\theta} +\dfrac{\Sigma_{i=1}^{n}(N-{X_i})}{1-\theta}$ \\
+
+$ = \dfrac{n \bar{X}}{\theta} - \dfrac{nN-n\bar{X}}{1-\theta} = 0 $ \\
+
+On further solving this equation,\\
+
+$ (1-\theta) \bar{X} = \theta(N- \bar{X})  $\\
+
+$\theta = \dfrac{\bar{X}}{N}$ \\
+
+Since N = 10,
+
+$\rightarrow \theta_{MLE} = \dfrac{\bar{X}}{10}$\\
+
+
+\item To estimate the Method of moments of the Binomial Distribution(N, $\theta$) \\
+
+$\mu = E(X) = N \theta$\\
+
+Set the above equation to $\bar{X}$\\
+
+The above equation can be rewritten as,\\
+$\hat{\theta} = \dfrac{\bar{X}}{N}$\\
+On equating N = 10; we get\\\\
+$\rightarrow \hat\theta_{MOM} = \dfrac{\bar{X}}{10}$\\
+
+\end{enumerate}
+
+
+\item
+The point estimator of skewness is obtained by MoneCarlo Integration and the standard error is estimated using Bootstrap method.\\
+The confidence intervals and the percentage of times the confidence intervals contains the true intervals are found.\\
+
+\begin{verbatim}
+ truevalue=(exp(1)+2)*sqrt(exp(1)-1)
+ sminus = splus = 0
+ count=0;
+ n=25;
+ for(i in 1:100)
+ {
+   y=rnorm(n,0,1);
+   x=exp(y);
+   s=sum((x-mean(x))^3)/(n*var(x)^1.5)
+  
+ #Computing the standard error
+    s1=c();
+    for(j in 1:100)
+    {
+ #simulated sample
+    r=sample(1:n,n,replace = TRUE)
+    z=x[r];
+    s1[j]=sum((z-mean(z))^3)/(n*var(z)^1.5)
+     }
+   serror=sqrt(var(s1));
+ #checking if our true value is within the CI
+   splus = s1+serror*1.96  
+  sminus = s1-serror*1.96
+ if(truevalue>sminus & truevalue<splus)
+ {
+  count = count+1;
+ }
+ }
+
+\end{verbatim}
+
+\textbf{Output} - The standard error was found to be 0.3366242\\
+The percentage of times the true value falls into the true confidence intervals is $2\%$
+
+
+\end{enumerate}
+\end{document}
